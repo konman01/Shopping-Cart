@@ -1,0 +1,23 @@
+{
+  "name": "shopping-cart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konman01/Shopping-Cart.git"
+  },
+  "author": "Manjunatha Koni Gurursaja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/konman01/Shopping-Cart/issues"
+  },
+  "homepage": "https://github.com/konman01/Shopping-Cart#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
