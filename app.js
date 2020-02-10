@@ -1,5 +1,6 @@
 const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 /*const server = http.createServer((req, res) => {
     /*console.log(req);*/
@@ -12,13 +13,20 @@ const express = require('express');
 
 const app = express();
 
-app.use((req, res, next) => {
-    console.log('In the middleware');
-    next(); // Allows the request to continue to next middleware in line
+app.use(bodyParser.urlencoded({extended: false}));
+
+
+app.use('/add-product', (req, res, next) => {
+    // the path add-product goes here, other request g to next
+    res.send('<form action="/product" method="POST"><input type="text" name="title"><button>Add Product</button></form>');
 });
 
-app.use((req, res, next) => {
-    console.log('In another middleware');
+app.use('/product', (req,res,next) => {
+    console.log(req.body);
+    res.redirect('/');
+});
+
+app.use('/', (req, res, next) => {
     res.send('<h1>Hello from the nodejs Server</h1>'); // header like text/html is automatically set usig this utility function
 });
 
