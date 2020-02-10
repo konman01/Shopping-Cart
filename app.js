@@ -2,6 +2,12 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const adminRoutes = require('./routes/admin');
+
+const shopRoutes = require('./routes/shop');
+
+
+
 /*const server = http.createServer((req, res) => {
     /*console.log(req);*/
 /*process.exit;*/ // end the event listener
@@ -11,24 +17,16 @@ const bodyParser = require('body-parser');
 
 /*const server = http.createServer(routes);*/
 
+// get amd post useses the exact path match, where as use() uses the relative match
+
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(adminRoutes);
 
-app.get('/add-product', (req, res, next) => {
-    // the path add-product goes here, other request g to next
-    res.send('<form action="/product" method="POST"><input type="text" name="title"><button>Add Product</button></form>');
-});
+app.use(shopRoutes);
 
-app.post('/product', (req,res,next) => {
-    console.log(req.body);
-    res.redirect('/');
-});
-
-app.use('/', (req, res, next) => {
-    res.send('<h1>Hello from the nodejs Server</h1>'); // header like text/html is automatically set usig this utility function
-});
 
 
 /*const server = http.createServer(app);
