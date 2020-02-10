@@ -23,7 +23,11 @@ app.use((req, res, next) => {
 });
 
 
-const server = http.createServer(app);
+/*const server = http.createServer(app);
 
 
-server.listen(3000);
+server.listen(3000);*/
+
+app.listen(3000, () => {
+    console.log('Started the server!');
+});
