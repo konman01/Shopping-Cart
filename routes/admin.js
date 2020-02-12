@@ -6,18 +6,23 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
+const products = [];
+
 // /admin/add-product => GET
 router.get('/add-product', (req, res, next) => {
     // the path add-product goes here, other request g to next
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+    //res.sendFile(path.join(rootDir, 'views', 'add-product.html')); -- Sending HTML Page
+    res.render('add-product', {pageTitle: 'Add Product', path:'/admin/add-product'});
 });
 
 // /admin/add-product => POST
 router.post('/add-product', (req, res, next) => {
     // if the get request comes here it will be not listened, the default root url middleware will be executed
     console.log(req.body);
+    products.push({title: req.body.title});
     res.redirect('/');
 });
 
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;
