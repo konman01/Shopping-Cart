@@ -22,9 +22,22 @@ const shopRoutes = require('./routes/shop');
 
 const app = express();
 
+
+
 // set function on app is used to set the values on global environment
-app.set('view engine', 'pug');
-app.set('views', './views' );
+// It is not required to import pug engine as we do for EJS and Express handlebar
+
+/*app.set('view engine', 'pug');
+app.set('views', './views' );*/
+
+// Defining the HandleBar engine for express
+/*app.engine('hbs', expressHbs()); // this will be extension for pages we write in html folder eg, test.handlebars
+app.set('view engine', 'hbs');
+app.set('views', 'views' );*/
+
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
