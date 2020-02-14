@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const adminRouter = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const get404Controller = require('./controller/error');
 
 
 
@@ -48,10 +49,7 @@ app.use('/admin', adminRouter.routes);
 
 app.use(shopRoutes);
 
-app.use('/', (req, res, next) => {
-    //res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); // sending the html page
-    res.status(404).render('404', {pageTitle: 'Product Not Found', path: ''});
-});
+app.use('/', get404Controller.get404);
 
 
 
