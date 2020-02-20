@@ -24,7 +24,9 @@ exports.getProduct  = (req, res, next) => {
     //res.sendFile(path.join(__dirname, '..','views', 'shop.html')); 
     res.sendFile(path.join(rootDir,'views', 'shop.html')); */ // Sending HTML page
 
-    const products = Product.fetchAll();
+    const products = Product.fetchAll((products) => {
+        res.render('shop', {prods: products, pageTitle: 'Shop', path:'/'}); // for pug page
+    });
     
-    res.render('shop', {prods: products, pageTitle: 'Shop', path:'/'}); // for pug page
+    
 }
