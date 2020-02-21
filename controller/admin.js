@@ -5,16 +5,17 @@ exports.getAddProduct = (req, res, next) => {
     //res.sendFile(path.join(rootDir, 'views', 'add-product.html')); -- Sending HTML Page
     res.render('admin/add-product', {
         pageTitle: 'Add Product',
-        path: '/admin/add-product',
-        formsCSS: true,
-        productCSS: true,
-        activeAddProduct: true
+        path: '/admin/add-product'
     });
 }
 
 exports.postAddProduct = (req, res, next) => {
     // if the get request comes here it will be not listened, the default root url middleware will be executed
-    const product = new Product(req.body.title);
+    const title = req.body.title;
+    const imgUrl = req.body.imgUrl;
+    const price = req.body.price;
+    const description = req.body.description;
+    const product = new Product(title, imgUrl, price, description);
     product.save();
     res.redirect('/');
 }
