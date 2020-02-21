@@ -3,7 +3,7 @@ const Product = require('../models/product');
 exports.getAddProduct = (req, res, next) => {
     // the path add-product goes here, other request g to next
     //res.sendFile(path.join(rootDir, 'views', 'add-product.html')); -- Sending HTML Page
-    res.render('add-product', {
+    res.render('admin/add-product', {
         pageTitle: 'Add Product',
         path: '/admin/add-product',
         formsCSS: true,
@@ -25,7 +25,7 @@ exports.getProduct  = (req, res, next) => {
     res.sendFile(path.join(rootDir,'views', 'shop.html')); */ // Sending HTML page
 
     const products = Product.fetchAll((products) => {
-        res.render('shop', {prods: products, pageTitle: 'Shop', path:'/'}); // for pug page
+        res.render('shop/product-list', {prods: products, pageTitle: 'Shop', path:'/'}); // for pug page
     });
     
     
