@@ -19,14 +19,14 @@ exports.postAddProduct = (req, res, next) => {
     res.redirect('/');
 }
 
-exports.getProduct  = (req, res, next) => {
-    /*console.log(adminData.products);
-    //res.sendFile(path.join(__dirname, '..','views', 'shop.html')); 
-    res.sendFile(path.join(rootDir,'views', 'shop.html')); */ // Sending HTML page
-
+exports.getProducts = (req, res, next) => {
     const products = Product.fetchAll((products) => {
-        res.render('shop/product-list', {prods: products, pageTitle: 'Shop', path:'/'}); // for pug page
+        res.render('admin/products',
+            {
+                prods: products,
+                pageTitle: 'Admin products',
+                path: '/admin/products',
+
+            }); // for pug page
     });
-    
-    
 }
